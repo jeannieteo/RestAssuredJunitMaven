@@ -18,5 +18,17 @@ public void validatePetSchema()   {
         .statusCode(200)
         .body(matchesJsonSchemaInClasspath("schema/petSchema.json"));
 }
+
+@Test
+public void validateOrderSchema() {
+    given()
+        //.spec(requestSpec)
+    .when()
+        .get(Routes.get_order + "8")
+    .then()
+        .statusCode(200)
+        .body(matchesJsonSchemaInClasspath("schema/orderSchema.json"));
     
+}
+
 }

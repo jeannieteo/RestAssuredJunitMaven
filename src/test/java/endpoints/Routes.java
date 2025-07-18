@@ -7,5 +7,6 @@ public class Routes {
     public static String post_createPet = base_url+ "/pet";
     public static String get_petById = base_url+ "/pet/";
     public static String delete_petById = base_url+ "/pet/{petId}";
+    public static String get_order = base_url + "/store/order/";
 }
 

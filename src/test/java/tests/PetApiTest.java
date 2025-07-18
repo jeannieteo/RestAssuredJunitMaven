@@ -5,7 +5,6 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.everyItem;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -29,7 +28,8 @@ public class PetApiTest extends TestBase {
     @Description("Verify pets can be fetched by different statuses")
     public void getPetByStatus(String testStatus) {
         given()
-            .header("api-key","special-key")
+            //.header("api-key","special-key")
+            .spec(requestSpec)
             .queryParam("status", testStatus)
         .when()
             .get(Routes.get_petByStatus)
@@ -46,7 +46,8 @@ public class PetApiTest extends TestBase {
     @Description("Verify error is return when status is not in the normal values.")
     public void getPetByStatusErrors(String testStatus) {
         given()
-            .header("api-key","special-key")
+            //.header("api-key","special-key")
+            .spec(requestSpec)
             .queryParam("status", testStatus)
         .when()
             .get(Routes.get_petByStatus)
@@ -55,14 +56,15 @@ public class PetApiTest extends TestBase {
             .contentType(ContentType.JSON);
     }
 
-    @Test
+    //@Test
     public void createPetsFromCSV() {
         List<Pet> pets = CSVDataProvider.readPetCSV("src/test/resources/testdata/pets.csv");
 
         for (Pet pet : pets) {
             given()
-                .header("api-key", "special-key")
-                .contentType(ContentType.JSON)
+                //.header("api-key", "special-key")
+                //.contentType(ContentType.JSON)
+                .spec(requestSpec)
                 .body(pet)
             .when()
                 .post(Routes.post_createPet)

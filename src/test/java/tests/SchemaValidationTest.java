@@ -11,8 +11,9 @@ public class SchemaValidationTest extends TestBase{
 @Test
 public void validatePetSchema()   {
     given()
+        //.spec(requestSpec)
     .when()
-        .get(Routes.get_petById + "9223372036854739000")
+        .get(Routes.get_petById + "3")
     .then()
         .statusCode(200)
         .body(matchesJsonSchemaInClasspath("schema/petSchema.json"));

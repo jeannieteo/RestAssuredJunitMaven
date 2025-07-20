@@ -38,8 +38,10 @@ mvn clean test\
        allure.properties\
        |--schema----\
         petSchema.json\
+        orderSchema.json\
        |--testdata----\    
         pets.csv\
+        order.csv\
    |--**java**-----\
        |--base----\
         TestBase.java\
@@ -47,8 +49,10 @@ mvn clean test\
         Routes.java\
        |--model---- \
         Pet.java\
+        Order.java\        
        |--tests---- \
         PetApiTest.java\
+        OrderApiTest.java\        
         SchemaValidationTest.java\
        |--utils---- \
         CSVDataProvider.java\
